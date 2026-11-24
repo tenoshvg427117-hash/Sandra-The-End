@@ -1,0 +1,441 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --ink: #f8f3ff;
+  --muted: #d9cfe6;
+  --pink: #ff9dbb;
+  --plum: #211b34;
+  --gold: #ffd28c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+
+body {
+  margin: 0;
+  background: #171522;
+  color: var(--ink);
+  font-family: Nunito, sans-serif;
+}
+
+/* MENÚ */
+
+.topbar {
+  height: 76px;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 5vw;
+  background: rgba(29,24,45,.83);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #ffffff20;
+}
+
+.brand {
+  color: white;
+  text-decoration: none;
+  font-size: 38px;
+}
+
+.nav {
+  display: flex;
+  gap: 35px;
+  height: 100%;
+  align-items: center;
+}
+
+.nav a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #eee4f5;
+  text-decoration: none;
+  font-weight: 800;
+  border-bottom: 3px solid transparent;
+}
+
+.nav a.active,
+.nav a:hover {
+  color: var(--pink);
+  border-color: var(--pink);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 28px;
+}
+
+/* PORTADA */
+
+.hero {
+  min-height: 100vh;
+  position: relative;
+
+  display: grid;
+  place-items: center;
+  text-align: center;
+
+  background-image: url('assets/fondo.png');
+  background-position: center;
+  background-size: cover;
+
+  padding: 110px 20px 70px;
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(21,17,36,.24),
+    rgba(24,18,34,.18) 55%,
+    rgba(20,17,29,.64)
+  );
+}
+
+.hero-content {
+  position: relative;
+  max-width: 850px;
+  text-shadow: 0 2px 14px #1c1428;
+}
+
+.pixel-heart {
+  font-size: 46px;
+  margin-bottom: 28px;
+}
+
+.eyebrow,
+.kicker {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  color: #ffd4e3;
+}
+
+.hero h1 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(25px, 4.5vw, 48px);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.intro {
+  font-size: clamp(17px, 2vw, 22px);
+  color: #f5eaf4;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto 36px;
+}
+
+.start-button {
+  display: inline-flex;
+  gap: 22px;
+  align-items: center;
+  padding: 17px 34px;
+
+  border: 2px solid white;
+  border-radius: 7px;
+
+  color: white;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 18px;
+
+  background: #35273a70;
+  transition: .2s;
+}
+
+.start-button:hover {
+  background: white;
+  color: #30213d;
+  transform: translateY(-3px);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: #f4dce9;
+}
+
+.scroll-hint span {
+  display: block;
+  font-size: 18px;
+  margin-top: 9px;
+}
+
+/* SECCIONES */
+
+.section,
+.game-section {
+  padding: 105px max(22px, calc((100vw - 1080px) / 2));
+}
+
+.section {
+  background: linear-gradient(180deg, #211b34, #28203b);
+}
+
+.section-heading {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 48px;
+}
+
+.section-heading h2,
+.letter h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(20px, 3vw, 30px);
+  line-height: 1.6;
+  margin: 18px 0;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* RECUERDOS */
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.memory-card {
+  background: #ffffff0b;
+  border: 1px solid #ffffff20;
+  border-radius: 14px;
+  padding: 28px 22px;
+  min-height: 230px;
+  transition: .2s;
+}
+
+.memory-card:hover,
+.game-tile:hover {
+  transform: translateY(-5px);
+  border-color: #ff9dbb88;
+}
+
+.memory-icon {
+  font-size: 34px;
+}
+
+.memory-card h3 {
+  font-size: 19px;
+  margin: 18px 0 9px;
+}
+
+.memory-card p {
+  color: #d4c9df;
+  line-height: 1.6;
+}
+
+/* VIDEOJUEGOS */
+
+.game-section {
+  background: #171522;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.game-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+
+  padding: 30px 16px;
+
+  background: linear-gradient(145deg, #302744, #211d32);
+  border: 1px solid #ffffff20;
+  border-radius: 14px;
+  transition: .2s;
+}
+
+.game-tile span {
+  font-size: 42px;
+}
+
+.game-tile small {
+  color: #c9bed5;
+  line-height: 1.5;
+}
+
+/* MOMENTOS */
+
+.moments {
+  background: linear-gradient(180deg, #28203b, #211b34);
+}
+
+.quote-card {
+  max-width: 760px;
+  margin: auto;
+  text-align: center;
+  padding: 55px 30px;
+
+  border: 1px solid #ffffff26;
+  border-radius: 18px;
+  background: #ffffff0d;
+}
+
+.quote-mark {
+  font-family: Georgia, serif;
+  font-size: 72px;
+  color: var(--pink);
+}
+
+.quote-card p {
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.5;
+  font-weight: 800;
+}
+
+.pixel-star {
+  color: var(--gold);
+  letter-spacing: 12px;
+}
+
+/* CARTA */
+
+.letter-section {
+  padding: 100px 22px;
+  background: #171522;
+}
+
+.letter {
+  max-width: 760px;
+  margin: auto;
+  padding: 50px;
+
+  background: #f3e9dc;
+  color: #45364b;
+  border-radius: 4px;
+  box-shadow: 0 18px 55px #0005;
+}
+
+.letter .kicker {
+  color: #9b647b;
+}
+
+.letter h2 {
+  color: #45364b;
+}
+
+.letter p {
+  font-size: 18px;
+  line-height: 1.85;
+  color: #665568;
+}
+
+.signoff {
+  font-weight: 800;
+  margin-top: 28px;
+}
+
+.signoff span {
+  color: #c96d8d;
+  font-size: 25px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #aa9eb8;
+  background: #12111b;
+  font-size: 13px;
+}
+
+/* CELULARES */
+
+@media(max-width: 800px) {
+  .memory-grid,
+  .game-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width: 560px) {
+  .topbar {
+    height: 64px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+
+    padding: 12px 20px;
+    background: #211b34;
+
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a {
+    padding: 12px;
+    border: 0;
+  }
+
+  .hero h1 {
+    font-size: 23px;
+  }
+
+  .memory-grid,
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section,
+  .game-section {
+    padding-top: 78px;
+    padding-bottom: 78px;
+  }
+
+  .letter-section {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .letter {
+    padding: 30px;
+  }
+}
