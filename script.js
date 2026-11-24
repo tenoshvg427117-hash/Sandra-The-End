@@ -45,3 +45,92 @@ if (petalContainer) {
     petalContainer.appendChild(petal);
   }
 }
+
+const galleryData = {
+  tardes: {
+    title: "Las tardes juntos",
+    description: "Esos días que siempre tendrán un lugar especial.",
+    photos: [
+      "fotos/tardes-1.jpg",
+      "fotos/tardes-2.jpg",
+      "fotos/tardes-3.jpg"
+    ]
+  },
+
+  combinaciones: {
+    title: "Nuestras combinaciones",
+    description: "Pequeños gustos y anécdotas muy nuestras.",
+    photos: [
+      "fotos/comida-1.jpg",
+      "fotos/comida-2.jpg",
+      "fotos/comida-3.jpg"
+    ]
+  },
+
+  peliculas: {
+    title: "Videos y películas",
+    description: "Historias que compartimos frente a una pantalla.",
+    photos: [
+      "fotos/peliculas-1.jpg",
+      "fotos/peliculas-2.jpg",
+      "fotos/peliculas-3.jpg"
+    ]
+  },
+
+  aventuras: {
+    title: "Pequeñas aventuras",
+    description: "Lugares y momentos que se convirtieron en recuerdos.",
+    photos: [
+      "fotos/aventuras-1.jpg",
+      "fotos/aventuras-2.jpg",
+      "fotos/aventuras-3.jpg"
+    ]
+  }
+};
+
+const galleryView = document.getElementById("gallery-view");
+const galleryTitle = document.getElementById("gallery-title");
+const galleryDescription = document.getElementById("gallery-description");
+const photoGrid = document.getElementById("photo-grid");
+const backGallery = document.getElementById("back-gallery");
+const memoryGrid = document.querySelector(".memory-grid");
+
+function openGallery(name) {
+  const gallery = galleryData[name];
+  if (!gallery) return;
+
+  galleryTitle.textContent = gallery.title;
+  galleryDescription.textContent = gallery.description;
+  photoGrid.replaceChildren();
+
+  gallery.photos.forEach(path => {
+    const img = document.createElement("img");
+    img.src = path;
+    img.alt = gallery.title;
+    img.loading = "lazy";
+    photoGrid.appendChild(img);
+  });
+
+  memoryGrid.hidden = true;
+  galleryView.hidden = false;
+  galleryView.scrollIntoView({ behavior: "smooth" });
+}
+
+document.querySelectorAll(".memory-card[data-gallery]").forEach(card => {
+  card.addEventListener("click", () => {
+    openGallery(card.dataset.gallery);
+  });
+
+  card.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openGallery(card.dataset.gallery);
+    }
+  });
+});
+
+backGallery.addEventListener("click", () => {
+  galleryView.hidden = true;
+  memoryGrid.hidden = false;
+  memoryGrid.scrollIntoView({ behavior: "smooth" });
+});
