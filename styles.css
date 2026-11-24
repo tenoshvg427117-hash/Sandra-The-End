@@ -439,3 +439,50 @@ footer {
     padding: 30px;
   }
 }
+
+/* PETALOS FLOTANTES */
+
+.petal-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.petal {
+  position: absolute;
+  top: -30px;
+  color: #ffb6cf;
+  font-size: 15px;
+  opacity: 0;
+  animation: falling linear infinite;
+  text-shadow: 0 0 10px #ff8fb9;
+}
+
+@keyframes falling {
+  0% {
+    transform: translateY(-30px) rotate(0deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: .8;
+  }
+
+  85% {
+    opacity: .7;
+  }
+
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petal {
+    animation: none;
+    display: none;
+  }
+}
