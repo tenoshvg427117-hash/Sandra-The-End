@@ -31,6 +31,7 @@
 
   <main>
 
+    <!-- INICIO -->
     <section class="hero" id="inicio">
       <div class="hero-shade"></div>
 
@@ -41,7 +42,7 @@
           Hoy Hace 18 Años Nacio Alguien Muy Especial ...
         </p>
 
-        <h1> Feliz Cumpleaños Mi amor </h1>
+        <h1>Feliz Cumpleaños Mi amor</h1>
 
         <p class="intro">
           Un espacio para recordar todo lo bonito
@@ -59,7 +60,10 @@
       </div>
     </section>
 
+
+    <!-- CAPÍTULO 01: RECUERDOS -->
     <section class="section" id="recuerdos">
+
       <div class="section-heading">
         <span class="kicker">CAPÍTULO 01</span>
         <h2>Pequeños recuerdos</h2>
@@ -69,48 +73,101 @@
         </p>
       </div>
 
-      <div class="memory-grid">
+      <!-- TARJETAS -->
+      <div class="memory-grid" id="memory-grid">
 
-        <article class="memory-card">
+        <article class="memory-card"
+          data-gallery="tardes"
+          tabindex="0"
+          role="button"
+          aria-label="Abrir galería: Las tardes juntos">
+
           <div class="memory-icon">🌸</div>
           <h3>Las tardes juntos</h3>
           <p>
             Las horas que pasaban volando entre
             pláticas, risas y tardes sin prisa.
           </p>
+          <span class="open-gallery">Ver recuerdos →</span>
         </article>
 
-        <article class="memory-card">
+
+        <article class="memory-card"
+          data-gallery="combinaciones"
+          tabindex="0"
+          role="button"
+          aria-label="Abrir galería: Nuestras combinaciones">
+
           <div class="memory-icon">🍟</div>
           <h3>Nuestras combinaciones</h3>
           <p>
             Chips Fuego, Philadelphia y Maggi.
             Una mezcla muy nuestra.
           </p>
+          <span class="open-gallery">Ver recuerdos →</span>
         </article>
 
-        <article class="memory-card">
+
+        <article class="memory-card"
+          data-gallery="peliculas"
+          tabindex="0"
+          role="button"
+          aria-label="Abrir galería: Videos y películas">
+
           <div class="memory-icon">🎬</div>
           <h3>Videos y películas</h3>
           <p>
             Las recomendaciones, las bromas y esos
             videos que siempre nos daban risa.
           </p>
+          <span class="open-gallery">Ver recuerdos →</span>
         </article>
 
-        <article class="memory-card">
+
+        <article class="memory-card"
+          data-gallery="aventuras"
+          tabindex="0"
+          role="button"
+          aria-label="Abrir galería: Pequeñas aventuras">
+
           <div class="memory-icon">☕</div>
           <h3>Pequeñas aventuras</h3>
           <p>
             Hasta los planes improvisados terminaban
             convirtiéndose en anécdotas.
           </p>
+          <span class="open-gallery">Ver recuerdos →</span>
         </article>
 
       </div>
+
+
+      <!-- GALERÍAS DE FOTOGRAFÍAS -->
+      <div class="gallery-view" id="gallery-view" hidden>
+
+        <button class="back-gallery" id="back-gallery">
+          ← Volver a recuerdos
+        </button>
+
+        <div class="section-heading">
+          <span class="kicker">ÁLBUM DE RECUERDOS</span>
+          <h2 id="gallery-title">Nuestros recuerdos</h2>
+          <p id="gallery-description">
+            Pequeños momentos que vale la pena conservar.
+          </p>
+        </div>
+
+        <div class="photo-grid" id="photo-grid">
+        </div>
+
+      </div>
+
     </section>
 
+
+    <!-- CAPÍTULO 02: VIDEOJUEGOS -->
     <section class="game-section" id="videojuegos">
+
       <div class="section-heading">
         <span class="kicker">CAPÍTULO 02</span>
         <h2>Nuestros mundos</h2>
@@ -120,6 +177,7 @@
       </div>
 
       <div class="game-grid">
+
         <div class="game-tile">
           <span>⛏️</span>
           <strong>Minecraft</strong>
@@ -143,10 +201,15 @@
           <strong>Roblox y más</strong>
           <small>Siempre había algo nuevo que jugar.</small>
         </div>
+
       </div>
+
     </section>
 
+
+    <!-- CAPÍTULO 03: MOMENTOS -->
     <section class="section moments" id="momentos">
+
       <div class="section-heading">
         <span class="kicker">CAPÍTULO 03</span>
         <h2>Las cosas pequeñas</h2>
@@ -157,15 +220,21 @@
 
       <div class="quote-card">
         <span class="quote-mark">“</span>
+
         <p>
           Algunos de los recuerdos más bonitos
           nacen de los días más normales.
         </p>
+
         <span class="pixel-star">✦ ✦ ✦</span>
       </div>
+
     </section>
 
+
+    <!-- CARTA -->
     <section class="letter-section" id="carta">
+
       <div class="letter">
         <span class="kicker">ÚLTIMO CAPÍTULO</span>
 
@@ -183,17 +252,21 @@
           Con cariño. <span>♡</span>
         </p>
       </div>
+
     </section>
 
   </main>
+
 
   <footer>
     TENOSH DIGITAL INC
   </footer>
 
-  <script src="script.js"></script>
 
-<div class="petal-container" id="petals"></div>
+  <!-- CONTENEDOR DE PÉTALOS -->
+  <div class="petal-container" id="petals"></div>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
