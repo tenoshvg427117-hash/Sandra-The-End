@@ -27,3 +27,21 @@ document.querySelectorAll('.nav a').forEach(link => {
     link.classList.add('active');
   });
 });
+
+const petalContainer = document.getElementById('petals');
+
+if (petalContainer) {
+  for (let i = 0; i < 18; i++) {
+    const petal = document.createElement('span');
+
+    petal.className = 'petal';
+    petal.textContent = '✿';
+
+    petal.style.left = Math.random() * 100 + '%';
+    petal.style.animationDuration = (8 + Math.random() * 10) + 's';
+    petal.style.animationDelay = (Math.random() * 12) + 's';
+    petal.style.fontSize = (10 + Math.random() * 10) + 'px';
+
+    petalContainer.appendChild(petal);
+  }
+}
