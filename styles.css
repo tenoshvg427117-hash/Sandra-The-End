@@ -610,3 +610,19 @@ footer {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* PLAYLIST DE SPOTIFY */
+
+.spotify-section {
+  width: 100%;
+  max-width: 700px;
+  margin: 40px auto 0;
+}
+
+.spotify-section iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  min-height: 500px;
+  border-radius: 12px;
+}
