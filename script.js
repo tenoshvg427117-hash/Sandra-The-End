@@ -9,14 +9,12 @@ const nav = document.querySelector('.nav');
 if (toggle && nav) {
   toggle.addEventListener('click', () => {
     const open = nav.classList.toggle('open');
-
     toggle.setAttribute('aria-expanded', String(open));
   });
 
   document.querySelectorAll('.nav a').forEach(link => {
     link.addEventListener('click', () => {
       nav.classList.remove('open');
-
       toggle.setAttribute('aria-expanded', 'false');
 
       document.querySelectorAll('.nav a').forEach(item => {
@@ -65,7 +63,7 @@ const galleryData = {
 
     photos: Array.from(
       { length: 31 },
-      (_, i) => `fotos/tardes-${i + 1}.jpg`
+      (_, i) => `fotos/tardes-${i + 1}.jpg.jpeg`
     )
   },
 
@@ -77,7 +75,7 @@ const galleryData = {
 
     photos: Array.from(
       { length: 10 },
-      (_, i) => `fotos/comida-${i + 1}.jpg`
+      (_, i) => `fotos/comida-${i + 1}.jpg.jpeg`
     )
   },
 
@@ -89,7 +87,7 @@ const galleryData = {
 
     videos: Array.from(
       { length: 13 },
-      (_, i) => `videos/video-${i + 1}.mp4`
+      (_, i) => `videos/video-${i + 1}.mp4.mp4`
     )
   },
 
@@ -101,7 +99,7 @@ const galleryData = {
 
     photos: Array.from(
       { length: 16 },
-      (_, i) => `fotos/aventuras-${i + 1}.jpg`
+      (_, i) => `fotos/aventuras-${i + 1}.jpg.jpeg`
     )
   }
 
@@ -209,11 +207,8 @@ document.querySelectorAll(".memory-card[data-gallery]").forEach(card => {
   card.addEventListener("keydown", event => {
 
     if (event.key === "Enter" || event.key === " ") {
-
       event.preventDefault();
-
       openGallery(card.dataset.gallery);
-
     }
 
   });
@@ -229,7 +224,6 @@ if (backGallery) {
 
   backGallery.addEventListener("click", () => {
 
-    // Pausar videos antes de salir
     photoGrid.querySelectorAll("video").forEach(video => {
       video.pause();
     });
