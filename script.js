@@ -239,3 +239,81 @@ if (backGallery) {
   });
 
 }
+
+
+// ==========================================
+// CAPÍTULO 03 - FOTOGRAFÍAS ALEATORIAS
+// ==========================================
+
+const filmPhoto1 = document.getElementById("film-photo-1");
+const filmPhoto2 = document.getElementById("film-photo-2");
+
+if (filmPhoto1 && filmPhoto2) {
+
+  // Las 57 fotografías que ya están en GitHub
+  const filmPhotos = [
+    ...Array.from(
+      { length: 31 },
+      (_, i) => `fotos/tardes-${i + 1}.jpg.jpeg`
+    ),
+
+    ...Array.from(
+      { length: 10 },
+      (_, i) => `fotos/comida-${i + 1}.jpg.jpeg`
+    ),
+
+    ...Array.from(
+      { length: 16 },
+      (_, i) => `fotos/aventuras-${i + 1}.jpg.jpeg`
+    )
+  ];
+
+  let availablePhotos = [...filmPhotos];
+
+  let currentPhoto = filmPhoto1;
+  let nextPhoto = filmPhoto2;
+
+  function showRandomPhoto() {
+
+    if (availablePhotos.length === 0) {
+      availablePhotos = [...filmPhotos];
+    }
+
+    const randomIndex = Math.floor(
+      Math.random() * availablePhotos.length
+    );
+
+    const selectedPhoto = availablePhotos.splice(
+      randomIndex, 1
+    )[0];
+
+    nextPhoto.onload = () => {
+
+      nextPhoto.classList.add("active");
+      currentPhoto.classList.remove("active");
+
+      const previousPhoto = currentPhoto;
+      currentPhoto = nextPhoto;
+      nextPhoto = previousPhoto;
+
+    };
+
+    nextPhoto.onerror = () => {
+      nextPhoto.removeAttribute("src");
+      showRandomPhoto();
+    };
+
+    nextPhoto.src = selectedPhoto;
+  }
+
+  // Primera fotografía
+  filmPhoto1.onload = () => {
+    filmPhoto1.classList.add("active");
+  };
+
+  showRandomPhoto();
+
+  // Cambiar fotografía cada 5 segundos
+  setInterval(showRandomPhoto, 5000);
+
+}
