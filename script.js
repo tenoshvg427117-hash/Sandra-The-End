@@ -248,59 +248,44 @@ if (backGallery) {
 const filmPhoto1 = document.getElementById("film-photo-1");
 const filmPhoto2 = document.getElementById("film-photo-2");
 
-if (filmPhoto1 && filmPhoto2) {
+if (filmPhoto1 && filmPhoto2 && typeof galleryData !== "undefined") {
 
-  // Las 57 fotografías que ya están en GitHub
+  // Reutilizar las rutas de las galerías existentes
   const filmPhotos = [
-    ...Array.from(
-      { length: 31 },
-      (_, i) => `fotos/tardes-${i + 1}.jpg.jpeg`
-    ),
-
-    ...Array.from(
-      { length: 10 },
-      (_, i) => `fotos/comida-${i + 1}.jpg.jpeg`
-    ),
-
-    ...Array.from(
-      { length: 16 },
-      (_, i) => `fotos/aventuras-${i + 1}.jpg.jpeg`
-    )
+    ...galleryData.tardes.photos,
+    ...galleryData.combinaciones.photos,
+    ...galleryData.aventuras.photos
   ];
 
   let availablePhotos = [...filmPhotos];
-
   let currentPhoto = filmPhoto1;
   let nextPhoto = filmPhoto2;
 
-  function showRandomPhoto() {
-
+  function getRandomPhoto() {
     if (availablePhotos.length === 0) {
       availablePhotos = [...filmPhotos];
     }
 
-    const randomIndex = Math.floor(
+    const index = Math.floor(
       Math.random() * availablePhotos.length
     );
 
-    const selectedPhoto = availablePhotos.splice(
-      randomIndex, 1
-    )[0];
+    return availablePhotos.splice(index, 1)[0];
+  }
+
+  function changePhoto() {
+    const selectedPhoto = getRandomPhoto();
 
     nextPhoto.onload = () => {
-
       nextPhoto.classList.add("active");
       currentPhoto.classList.remove("active");
 
-      const previousPhoto = currentPhoto;
-      currentPhoto = nextPhoto;
-      nextPhoto = previousPhoto;
-
+      [currentPhoto, nextPhoto] = [nextPhoto, currentPhoto];
     };
 
     nextPhoto.onerror = () => {
-      nextPhoto.removeAttribute("src");
-      showRandomPhoto();
+      console.error("No se pudo cargar:", selectedPhoto);
+      changePhoto();
     };
 
     nextPhoto.src = selectedPhoto;
@@ -311,9 +296,8 @@ if (filmPhoto1 && filmPhoto2) {
     filmPhoto1.classList.add("active");
   };
 
-  showRandomPhoto();
+  filmPhoto1.src = getRandomPhoto();
 
-  // Cambiar fotografía cada 5 segundos
-  setInterval(showRandomPhoto, 5000);
-
+  // Cambiar cada 5 segundos
+  setInterval(changePhoto, 5000);
 }
